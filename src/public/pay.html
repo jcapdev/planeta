@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Store</title>
+    <link rel="stylesheet" href="https://bootswatch.com/5/zephyr/bootstrap.min.css"/>
+    <style>
+        p {
+            margin-bottom: 0rem;
+        }
+    </style>
+</head>
+<body>
+        
+    <div class = "row">
+            <div class="col-md-2" style="background-color: #3d1e55 !important;border-color: #3d1e55 !important;">
+                  
+            </div>
+            <div class="col-md-10">
+                 <div style="padding: 40px!important;background-color: #3d1e55 !important;border-color: #3d1e55 !important;text-align: center;color: white;">
+                    <p>Accede a miles de materiales educativos</p>
+                    <p>Nuevos recursos cada semana</p>
+                    <p>Descarga cuando quieras</p>
+                    <p>cuando quieras</p>    
+                 </div>
+                 <div class = "row">
+                       <div style="text-align: center;"  class="col-md-6 col-12" >
+                            <h3>MENSUAL</h3>
+                            <p>Descargas Mensuales Premium: 10 </p>
+                            <p>Descargas Free ilimitadas</p>
+                            <p>Previsualización de todas las planeaciones</p>
+                            <button style="border-radius: 28px;height: 36px;padding: 0 16px;background-color: #3d1e55 !important;border-color: #3d1e55 !important;color: white;" id = "checkout">Pago con tarjeta</button> 
+                       </div>                       
+                 </div>  
+                 
+            </div>
+    </div>
+
+
+    
+       
+
+ <script>
+        const button = document.getElementById('checkout')
+        button.addEventListener('click', async () => {
+            const res = await fetch('/create-checkout-session', {
+                method: 'POST',             
+            })
+            const data = await res.json();
+            console.log(data);
+            window.location.href = data.url;
+
+        })
+    </script> 
+</body>
+</html>
