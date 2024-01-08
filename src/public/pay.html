@@ -1,47 +1,90 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Store</title>
-    <link rel="stylesheet" href="https://bootswatch.com/5/zephyr/bootstrap.min.css"/>
-    <style>
-        p {
-            margin-bottom: 0rem;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Navbar y Menú Lateral con Bootstrap</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* Estilos personalizados */
+    body {
+      padding-top: 56px;
+    }
+    .sidebar {
+      position: fixed;
+      top: 56px;
+      bottom: 0;
+      left: 0;
+      z-index: 1000;
+      padding: 48px 0;
+      overflow-x: hidden;
+      overflow-y: auto;
+      background-color: #f8f9fa;
+      border-right: 1px solid #e9ecef;
+    }
+  </style>
 </head>
 <body>
-        
-    <div class = "row">
-            <div class="col-md-2" style="background-color: #3d1e55 !important;border-color: #3d1e55 !important;">
-                  
-            </div>
-            <div class="col-md-10">
-                 <div style="padding: 40px!important;background-color: #3d1e55 !important;border-color: #3d1e55 !important;text-align: center;color: white;">
-                    <p>Accede a miles de materiales educativos</p>
-                    <p>Nuevos recursos cada semana</p>
-                    <p>Descarga cuando quieras</p>
-                    <p>cuando quieras</p>    
-                 </div>
-                 <div class = "row">
-                       <div style="text-align: center;"  class="col-md-6 col-12" >
-                            <h3>MENSUAL</h3>
-                            <p>Descargas Mensuales Premium: 10 </p>
-                            <p>Descargas Free ilimitadas</p>
-                            <p>Previsualización de todas las planeaciones</p>
-                            <button style="border-radius: 28px;height: 36px;padding: 0 16px;background-color: #3d1e55 !important;border-color: #3d1e55 !important;color: white;" id = "checkout">Pago con tarjeta</button> 
-                       </div>                       
-                 </div>  
-                 
-            </div>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">Nombre de tu Sitio</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Acerca de</a>
+          </li>
+          <!-- Más elementos del Navbar aquí -->
+        </ul>
+      </div>
     </div>
+  </nav>
 
+  <!-- Menú Lateral -->
+  <div class="sidebar">
+    <ul class="nav flex-column">
+      <li class="nav-item">
+        <a class="nav-link active" href="#">Recomendaciones</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Planeaciones</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Pagos</a>
+      </li>
+      <!-- Más opciones de menú lateral aquí -->
+    </ul>
+  </div>
 
-    
-       
+  <!-- Contenido principal -->
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+        <!-- Contenido principal de la página -->
+        <h1>Contenido Principal</h1>
+        <p>Este es un ejemplo de una página con un Navbar y un menú lateral usando Bootstrap.</p>
+        <div style="text-align: center;"  class="col-md-6 col-12" >
+            <h3>MENSUAL</h3>
+            <p>Descargas Mensuales Premium: 10 </p>
+            <p>Descargas Free ilimitadas</p>
+            <p>Previsualización de todas las planeaciones</p>
+            <button style="border-radius: 28px;height: 36px;padding: 0 16px;background-color: #3d1e55 !important;border-color: #3d1e55 !important;color: white;" id = "checkout">Pago con tarjeta</button> 
+       </div>   
+      </div>
+    </div>
+  </div>
 
- <script>
+  <!-- Scripts de Bootstrap y jQuery -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
         const button = document.getElementById('checkout')
         button.addEventListener('click', async () => {
             const res = await fetch('/create-checkout-session', {
@@ -51,7 +94,7 @@
             console.log(data);
             window.location.href = data.url;
 
-        })
-    </script> 
+        })    
+  </script>
 </body>
 </html>

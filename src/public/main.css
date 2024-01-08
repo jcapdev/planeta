@@ -1,7 +1,8 @@
 body {
-    /* background-color: #303030; */
-    background-image: url(https://planetapreescolar.com/fondo/fondomorado.png);
+    background-color: #303030; 
+    /* background-image: url(https://planetapreescolar.com/fondo/fondomorado.png); */
   }
 .card {
-    background-color: #3d1e55 !important;
+    /* background-color: #3d1e55 !important; */
+    background-color: aliceblue;
 }
