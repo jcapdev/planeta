@@ -3,7 +3,35 @@ const {Router} = require('express');
 const {db} = require('../firebase')
 
 const router = Router();
+/*data material didactico*/ 
+
+
+router.get( '/material-dicactico',async (req ,res) => {
+    const querySnapshot = await db.collection('contacts').get()
+       
+    
+   const materialdidact =  querySnapshot.docs.map(
+        doc => ({
+            id: doc.id,
+            /*firstname:doc.data().firstname,
+            lastname: doc.data().lastname,
+            email:doc.data().email,
+            phone:doc.data().phone,*/
+            ...doc.data()
+
+        })
+
+    )
+    // console.log(materialdidact);
+    // res.send(materialdidact) 
+    res.render('materialdidactico', {materialdidact})
+
+ });
+
+
+
 /*CONSULT*/ 
+
 router.get( '/crud',async (req ,res) => {
     const querySnapshot = await db.collection('contacts').get()
     
@@ -26,6 +54,8 @@ router.get( '/crud',async (req ,res) => {
     res.render('index', {contacts})
 
  });
+
+
 /*ADD ROW*/ 
 router.post("/new-contact", async (req, res) => {
 const { firstname, lastname, email, phone } = req.body;
