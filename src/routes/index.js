@@ -7,7 +7,7 @@ const router = Router();
 
 
 router.get( '/material-dicactico',async (req ,res) => {
-    const querySnapshot = await db.collection('contacts').get()
+    const querySnapshot = await db.collection('MaterialDidactico').get()
        
     
    const materialdidact =  querySnapshot.docs.map(

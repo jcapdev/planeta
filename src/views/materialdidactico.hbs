@@ -1,34 +1,29 @@
-<div class="col-md-6 offset-md-3">
+<div class="col-md-12">
   <div class="card bg-dark text-light">
     <div class="card-header">
-      <h1 class="h4 text-white">Material didactico</h1>
+      {{!-- <h1 class="h4 text-white">Material didactico</h1> --}}
+      <h1 class="h4 text-white">Texto Prueba</h1>
     </div>
     <div class="card-body">
       {{#if materialdidact}}
-        <ul class="list-group">
+        <div class = "row">
           {{#each materialdidact}}
-            <li
-              class="list-group-item d-flex justify-content-between align-items-center"
-            >
-              <div class="my-auto">
-                <h3 class="h6">{{firstname}} {{lastname}}</h3>
-                <p>{{email}}</p>
-              </div>
-              <div>
-                <a
-                  href="/delete-contact/{{id}}"
-                  class="btn btn-danger"
-                >Delete</a>
-                <a
-                  href="/edit-contact/{{id}}"
-                  class="btn btn-secondary"
-                >Edit</a>
-              </div>
-            </li>
+            <div class = "col-lg-4">
+                <div class = "bs-component">
+                     <div class="card mb-3">
+                        <h3 class="card-header">{{titulo}}</h3>                         
+                        <img src="{{UrlImagen}}" alt="">
+                        <div class="card-body">
+                          <h5 class="card-title">{{titulo}}</h5>
+                          <h6 class="card-subtitle text-muted">{{contenido}}</h6>
+                        </div>
+                      </div>                     
+                </div>
+            </div>            
           {{/each}}
-        </ul>
-      {{!-- {{else}}
-        <p class="fs-4 text-center">No Contacts Yet.</p> --}}
+        </div>
+        {{else}}
+        <p class="fs-4 text-center">No hay registros.</p>
       {{/if}}
     </div>    
   </div>
