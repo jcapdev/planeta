@@ -4,87 +4,255 @@
   <meta charset="UTF-8">
   <title>Navbar y Menú Lateral con Bootstrap</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <!--boostrap 5.2-->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+  <!-- toastify -->
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+  <!-- Font Awesome CSS (Optional for icons) -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <!-- Font Awesome CSS (Optional for icons) -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">      
+  <script src="/mainlog" type="module"></script>
+
   <style>
-    /* Estilos personalizados */
-    body {
-      padding-top: 56px;
-    }
+    /* Custom CSS for sidebar */
     .sidebar {
-      position: fixed;
-      top: 56px;
-      bottom: 0;
-      left: 0;
-      z-index: 1000;
-      padding: 48px 0;
-      overflow-x: hidden;
-      overflow-y: auto;
-      background-color: #f8f9fa;
-      border-right: 1px solid #e9ecef;
+      height: 100vh;
+    }
+
+    .sidebar .nav-link {
+      color: #fff;
+    }
+
+    body {
+      /*modo incognito*/
+       /*background-color: white; */
+       /* modo real*/
+       background-image: url(https://planetapreescolar.com/fondo/fondomorado.png);
+
+    }
+    /*modo real*/
+    .bg-dark {  
+      background-color: #3d1e55 !important;
     }
   </style>
 </head>
 <body>
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-    <div class="container">
-      <a class="navbar-brand" href="#">Nombre de tu Sitio</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+ <!-- navegacion -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+      <!-- Elementos a la izquierda -->
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="#">Inicio</a>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item logged-out">
+            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#signinModal">Signin</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Acerca de</a>
+            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#signupModal">Signup</a>
           </li>
-          <!-- Más elementos del Navbar aquí -->
-        </ul>
-      </div>
+          <li class="nav-item">
+            <a class="nav-link logged-in" href="#" id = "logout">Logout</a>
+          </li>
+        </ul>        
+        <!-- Navbar Brand a la derecha -->
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item logged-out">
+              <a class="nav-link" href="#">Elemento1</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Elemento2</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Elemento3</a>
+            </li>
+        </ul>          
+      </div>  
     </div>
   </nav>
 
   <!-- Menú Lateral -->
-  <div class="sidebar">
-    <ul class="nav flex-column">
-      <li class="nav-item">
-        <a class="nav-link active" href="#">Recomendaciones</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Planeaciones</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Pagos</a>
-      </li>
-      <!-- Más opciones de menú lateral aquí -->
-    </ul>
-  </div>
-
-  <!-- Contenido principal -->
   <div class="container-fluid">
     <div class="row">
-      <div class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
-        <!-- Contenido principal de la página -->
-        <h1>Contenido Principal</h1>
-        <p>Este es un ejemplo de una página con un Navbar y un menú lateral usando Bootstrap.</p>
-        <div style="text-align: center;"  class="col-md-6 col-12" >
-            <h3>MENSUAL</h3>
-            <p>Descargas Mensuales Premium: 10 </p>
-            <p>Descargas Free ilimitadas</p>
-            <p>Previsualización de todas las planeaciones</p>
-            <button style="border-radius: 28px;height: 36px;padding: 0 16px;background-color: #3d1e55 !important;border-color: #3d1e55 !important;color: white;" id = "checkout">Pago con tarjeta</button> 
-       </div>   
+      <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark sidebar collapse">
+        <div class="position-sticky">
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">
+                <i class="fas fa-th-list me-2"></i>Inicio
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <i class="fas fa-plane me-2"></i>Recomendaciones
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/planeaciones">
+                <i class="fas fa-dollar-sign me-2"></i>planeaciones
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/hojas-trabajo">
+                <i class="fas fa-dollar-sign me-2"></i>hojas de TRABAJO
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/material-dicactico">
+                <i class="fas fa-dollar-sign me-2"></i>material didáctico
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/hojas-colorear">
+                <i class="fas fa-dollar-sign me-2"></i>hojas para colorear
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/interactivos">
+                <i class="fas fa-dollar-sign me-2"></i>interactivos
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="fas fa-dollar-sign me-2"></i>administración
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/blog">
+                <i class="fas fa-dollar-sign me-2"></i>blog
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/foro">
+                <i class="fas fa-dollar-sign me-2"></i>foro
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/alianzas">
+                <i class="fas fa-dollar-sign me-2"></i>alianzas
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <i class="fas fa-dollar-sign me-2"></i>administrador
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/pagos">
+                <i class="fas fa-dollar-sign me-2"></i>Hazte premium
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <div class="pt-3">
+              <div class="row">
+               <div class = 'col-md-12'>
+                    <div class = "card bg-dark text-light" >
+                        <div class = "card bg-light text-dark">
+                          <div class="card-header">
+                            <h1 class="h4 text-dark">Contenido Principal</h1>
+                          </div>                          
+                          <p>Este es un ejemplo de una página con un Navbar y un menú lateral usando Bootstrap.</p>
+                          <div style="text-align: center;"  class="col-md-6 col-12" >
+                            <h3>MENSUAL</h3>
+                            <p>Descargas Mensuales Premium: 10 </p>
+                            <p>Descargas Free ilimitadas</p>
+                            <p>Previsualización de todas las planeaciones</p>
+                            <button style="border-radius: 28px;height: 36px;padding: 0 16px;background-color: #3d1e55 !important;border-color: #3d1e55 !important;color: white;" id = "checkout">Pago con tarjeta</button> 
+                          </div> 
+                        </div>
+                    </div>
+               </div>
+            </div>
+      </main>       
+      <!-- Content Area --> 
+      
+    </div>
+  </div>
+  <!-- modal  signinModal-->
+
+  <div class="modal fade" id="signinModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Signin</h1>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="login-form">
+            <label for="email">Email:</label>
+            <input type="email" id = "login-email" class="form-control mb-3" placeholder="Email" required>
+            <label for="password">Password:</label>
+            <input type="password" id = "login-password" class="form-control mb-3" placeholder="********" required>
+            <button class = "btn btn-primary w-100 mb-4" type="submit">Login</button>
+          </form>
+          <!-- <label class = "w-100 mb-4" id = "reset-password" style = "cursor: pointer;margin-top: 8px;text-align: center;">Olvidaste tu contraseña</label> -->
+          <button id = "reset-password" class = "btn btn-info" data-bs-toggle="modal" data-bs-target="#resetModal">Olvidaste tu contraseña</button>
+          <button id="googleLogin" class = "btn btn-info">
+              Google
+          </button>
+          <button class = "btn btn-primary"  id = "facebookLogin" >
+              Facebook
+          </button>
+          
+        </div>       
       </div>
     </div>
   </div>
 
+  <!--modal  signupModal-->
+
+  <div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5 bg-white" id="exampleModalLabel">Signup</h1>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="signup-form">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control mb-3" id ="signup-email" placeholder="Email" required>
+            <label for="password">Password:</label>
+            <input type="password" class="form-control mb-3" id = "signup-password" placeholder="********" required>
+            <button class="btn btn-primary" type="submit">Registrar</button>
+          </form>
+        </div>        
+      </div>
+    </div>
+  </div>
+
+<!-- modal reset password -->
+
+  <div class="modal fade" id="resetModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Restablecer contraseña</h1>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="login-form-reset">
+            <label for="email">Email:</label>
+            <input type="email" id = "login-email-reset" class="form-control mb-3" placeholder="Email" required>            
+            <button class = "btn btn-primary w-100 mb-4" type="submit">Restablecer</button>
+          </form>
+        </div>       
+      </div>
+    </div>
+  </div>
   <!-- Scripts de Bootstrap y jQuery -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  <script>
+  <!--boostraps scripts-->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!--toastify  -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script> 
+<script>
         const button = document.getElementById('checkout')
         button.addEventListener('click', async () => {
             const res = await fetch('/create-checkout-session', {
