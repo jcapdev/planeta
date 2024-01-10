@@ -1,0 +1,33 @@
+<div class="col-md-12">
+  {{!-- modo incognito --}}
+  <div class="card bg-dark text-light">
+    {{!--  --}}
+  <div class="card bg-light text-dark">
+    <div class="card-header">
+      {{!-- <h1 class="h4 text-white">Material didactico</h1> --}}
+      <h1 class="h4 text-dark">Texto Prueba</h1>
+    </div>
+    <div class="card-body">
+      {{#if materialdidact}}
+        <div class = "row">
+          {{#each materialdidact}}
+            <div class = "col-lg-4">
+                <div class = "bs-component">
+                     <div class="card mb-3">
+                        <h3 class="card-header">{{titulo}}</h3>                         
+                        <img src="{{UrlImagen}}" alt="">
+                        <div class="card-body">
+                          <h5 class="card-title">{{titulo}}</h5>
+                          <h6 class="card-subtitle text-muted">{{contenido}}</h6>
+                        </div>
+                      </div>                     
+                </div>
+            </div>            
+          {{/each}}
+        </div>
+        {{else}}
+        <p class="fs-4 text-center">No hay registros.</p>
+      {{/if}}
+    </div>    
+  </div>
+</div>
