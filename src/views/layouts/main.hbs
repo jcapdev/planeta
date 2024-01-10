@@ -23,6 +23,18 @@
     .sidebar .nav-link {
       color: #fff;
     }
+
+    body {
+      /*modo incognito*/
+       background-color: white; 
+       /* modo real*/
+       /*background-image: url(https://planetapreescolar.com/fondo/fondomorado.png);*/
+
+    }
+    /*modo real*/
+    /*.bg-dark {  
+      background-color: #3d1e55 !important;
+    }*/
   </style>
 </head>
 <body>
@@ -69,31 +81,81 @@
             <ul class="nav flex-column">
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="#">
-                  <i class="fas fa-th-list me-2"></i>Recomendaciones
+                  <i class="fas fa-th-list me-2"></i>Inicio
                 </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">
-                  <i class="fas fa-plane me-2"></i>Planeaciones
+                  <i class="fas fa-plane me-2"></i>Recomendaciones
                 </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">
-                  <i class="fas fa-dollar-sign me-2"></i>Pagos
+                  <i class="fas fa-dollar-sign me-2"></i>planeaciones
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/hojastrabajo">
+                  <i class="fas fa-dollar-sign me-2"></i>hojas de TRABAJO
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/material-dicactico">
+                  <i class="fas fa-dollar-sign me-2"></i>material didáctico
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/hojas-colorear">
+                  <i class="fas fa-dollar-sign me-2"></i>hojas para colorear
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/interactivos">
+                  <i class="fas fa-dollar-sign me-2"></i>interactivos
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/">
+                  <i class="fas fa-dollar-sign me-2"></i>administración
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/blog">
+                  <i class="fas fa-dollar-sign me-2"></i>blog
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/foro">
+                  <i class="fas fa-dollar-sign me-2"></i>foro
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/alianzas">
+                  <i class="fas fa-dollar-sign me-2"></i>alianzas
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <i class="fas fa-dollar-sign me-2"></i>administrador
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <i class="fas fa-dollar-sign me-2"></i>Hazte premium
                 </a>
               </li>
             </ul>
           </div>
         </nav>
-  
-        <!-- Content Area -->
-        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-          <div class="pt-3">
-             <div class="row">
-                {{{body}}}
+         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+              <div class="pt-3">
+                <div class="row">
+                    {{{body}}}
+                  </div>
               </div>
-          </div>
-        </main>
+          </main>       
+        <!-- Content Area --> 
+        
       </div>
     </div>
 
