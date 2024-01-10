@@ -4,14 +4,195 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Firebase Admin SDK</title>
-    <link rel="stylesheet" href="https://bootswatch.com/5/lux/bootstrap.min.css"/>
-    <link rel="stylesheet" href="main.css" />
+<!--boostrap 5.2-->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+  <!-- toastify -->
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+  <!-- Font Awesome CSS (Optional for icons) -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <!-- Font Awesome CSS (Optional for icons) -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">      
+  {{!-- <link rel="stylesheet" href="main.css" /> --}}
+  <script src="/mainlog" type="module"></script>
+  <style>
+    /* Custom CSS for sidebar */
+    .sidebar {
+      height: 100vh;
+    }
+
+    .sidebar .nav-link {
+      color: #fff;
+    }
+  </style>
 </head>
 <body>
+  <!-- navegacion -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- Elementos a la izquierda -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item logged-out">
+              <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#signinModal">Signin</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#signupModal">Signup</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link logged-in" href="#" id = "logout">Logout</a>
+            </li>
+          </ul>        
+          <!-- Navbar Brand a la derecha -->
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+              <li class="nav-item logged-out">
+                <a class="nav-link" href="#">Elemento1</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Elemento2</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Elemento3</a>
+              </li>
+          </ul>          
+        </div>  
+      </div>
+    </nav>
+
+      <!-- Sidebar -->
+    <div class="container-fluid">
+      <div class="row">
+        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark sidebar collapse">
+          <div class="position-sticky">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">
+                  <i class="fas fa-th-list me-2"></i>Recomendaciones
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <i class="fas fa-plane me-2"></i>Planeaciones
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <i class="fas fa-dollar-sign me-2"></i>Pagos
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+  
+        <!-- Content Area -->
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+          <div class="pt-3">
+             <div class="row">
+                {{{body}}}
+              </div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+
+
+{{!-- 
      <div class="container p-4">
       <div class="row">
         {{{body}}}
       </div>
+    </div> --}}
+
+  <!-- modal  signinModal-->
+
+  <div class="modal fade" id="signinModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Signin</h1>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="login-form">
+            <label for="email">Email:</label>
+            <input type="email" id = "login-email" class="form-control mb-3" placeholder="Email" required>
+            <label for="password">Password:</label>
+            <input type="password" id = "login-password" class="form-control mb-3" placeholder="********" required>
+            <button class = "btn btn-primary w-100 mb-4" type="submit">Login</button>
+          </form>
+          <!-- <label class = "w-100 mb-4" id = "reset-password" style = "cursor: pointer;margin-top: 8px;text-align: center;">Olvidaste tu contraseña</label> -->
+          <button id = "reset-password" class = "btn btn-info" data-bs-toggle="modal" data-bs-target="#resetModal">Olvidaste tu contraseña</button>
+          <button id="googleLogin" class = "btn btn-info">
+              Google
+          </button>
+          <button class = "btn btn-primary"  id = "facebookLogin" >
+              Facebook
+          </button>
+          
+        </div>       
+      </div>
     </div>
+  </div>
+
+  <!--modal  signupModal-->
+
+  <div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5 bg-white" id="exampleModalLabel">Signup</h1>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="signup-form">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control mb-3" id ="signup-email" placeholder="Email" required>
+            <label for="password">Password:</label>
+            <input type="password" class="form-control mb-3" id = "signup-password" placeholder="********" required>
+            <button class="btn btn-primary" type="submit">Registrar</button>
+          </form>
+        </div>        
+      </div>
+    </div>
+  </div>
+
+<!-- modal reset password -->
+
+  <div class="modal fade" id="resetModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Restablecer contraseña</h1>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="login-form-reset">
+            <label for="email">Email:</label>
+            <input type="email" id = "login-email-reset" class="form-control mb-3" placeholder="Email" required>            
+            <button class = "btn btn-primary w-100 mb-4" type="submit">Restablecer</button>
+          </form>
+        </div>       
+      </div>
+    </div>
+  </div>
+
+  <!--boostraps scripts-->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!--toastify  -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script> 
+  <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>       -->
+
+  <!-- firebase scripts-->
+
+  <script type="module">
+
+  </script>
+
+
 </body>
 </html>

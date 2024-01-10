@@ -28,6 +28,199 @@ router.get( '/material-dicactico',async (req ,res) => {
 
  });
 
+/**/ 
+
+
+router.get( '/interactivos',async (req ,res) => {
+   /* cambiar por documento de datos de interactivos*/
+   const querySnapshot = await db.collection('MaterialDidactico').get()
+       
+    
+   const materialdidact =  querySnapshot.docs.map(
+        doc => ({
+            id: doc.id,
+            /*firstname:doc.data().firstname,
+            lastname: doc.data().lastname,
+            email:doc.data().email,
+            phone:doc.data().phone,*/
+            ...doc.data()
+
+        })
+
+    )
+    // console.log(materialdidact);
+    // res.send(materialdidact) 
+    res.render('interactivos', {materialdidact})
+
+ });
+
+
+ router.get( '/hojas-colorear',async (req ,res) => {
+    /* cambiar por documento de datos de interactivos*/
+    const querySnapshot = await db.collection('MaterialDidactico').get()
+        
+     
+    const materialdidact =  querySnapshot.docs.map(
+         doc => ({
+             id: doc.id,
+             /*firstname:doc.data().firstname,
+             lastname: doc.data().lastname,
+             email:doc.data().email,
+             phone:doc.data().phone,*/
+             ...doc.data()
+ 
+         })
+ 
+     )
+     // console.log(materialdidact);
+     // res.send(materialdidact) 
+     res.render('hojascolorear', {materialdidact})
+ 
+  });
+
+
+  router.get( '/hojas-trabajo',async (req ,res) => {
+    /* cambiar por documento de datos de interactivos*/
+    const querySnapshot = await db.collection('MaterialDidactico').get()
+        
+     
+    const materialdidact =  querySnapshot.docs.map(
+         doc => ({
+             id: doc.id,
+             /*firstname:doc.data().firstname,
+             lastname: doc.data().lastname,
+             email:doc.data().email,
+             phone:doc.data().phone,*/
+             ...doc.data()
+ 
+         })
+ 
+     )
+     // console.log(materialdidact);
+     // res.send(materialdidact) 
+     res.render('hojastrabajo', {materialdidact})
+ 
+  });
+ 
+
+  router.get( '/planeaciones',async (req ,res) => {
+    /* cambiar por documento de datos de interactivos*/
+    const querySnapshot = await db.collection('MaterialDidactico').get()
+        
+     
+    const materialdidact =  querySnapshot.docs.map(
+         doc => ({
+             id: doc.id,
+             /*firstname:doc.data().firstname,
+             lastname: doc.data().lastname,
+             email:doc.data().email,
+             phone:doc.data().phone,*/
+             ...doc.data()
+ 
+         })
+ 
+     )
+     // console.log(materialdidact);
+     // res.send(materialdidact) 
+     res.render('planeaciones', {materialdidact})
+ 
+  });
+ 
+
+  router.get( '/blog',async (req ,res) => {
+    /* cambiar por documento de datos de interactivos*/
+    const querySnapshot = await db.collection('MaterialDidactico').get()
+        
+     
+    const materialdidact =  querySnapshot.docs.map(
+         doc => ({
+             id: doc.id,
+             /*firstname:doc.data().firstname,
+             lastname: doc.data().lastname,
+             email:doc.data().email,
+             phone:doc.data().phone,*/
+             ...doc.data()
+ 
+         })
+ 
+     )
+     // console.log(materialdidact);
+     // res.send(materialdidact) 
+     res.render('blog', {materialdidact})
+ 
+  });
+
+
+  router.get( '/recomendaciones',async (req ,res) => {
+    /* cambiar por documento de datos de interactivos*/
+    const querySnapshot = await db.collection('MaterialDidactico').get()
+        
+     
+    const materialdidact =  querySnapshot.docs.map(
+         doc => ({
+             id: doc.id,
+             /*firstname:doc.data().firstname,
+             lastname: doc.data().lastname,
+             email:doc.data().email,
+             phone:doc.data().phone,*/
+             ...doc.data()
+ 
+         })
+ 
+     )
+     // console.log(materialdidact);
+     // res.send(materialdidact) 
+     res.render('recomendaciones', {materialdidact})
+ 
+  });
+
+
+  router.get( '/foro',async (req ,res) => {
+    /* cambiar por documento de datos de interactivos*/
+    const querySnapshot = await db.collection('MaterialDidactico').get()
+        
+     
+    const materialdidact =  querySnapshot.docs.map(
+         doc => ({
+             id: doc.id,
+             /*firstname:doc.data().firstname,
+             lastname: doc.data().lastname,
+             email:doc.data().email,
+             phone:doc.data().phone,*/
+             ...doc.data()
+ 
+         })
+ 
+     )
+     // console.log(materialdidact);
+     // res.send(materialdidact) 
+     res.render('foro', {materialdidact})
+ 
+  });
+
+  router.get( '/alianzas',async (req ,res) => {
+    /* cambiar por documento de datos de interactivos*/
+    const querySnapshot = await db.collection('MaterialDidactico').get()
+        
+     
+    const materialdidact =  querySnapshot.docs.map(
+         doc => ({
+             id: doc.id,
+             /*firstname:doc.data().firstname,
+             lastname: doc.data().lastname,
+             email:doc.data().email,
+             phone:doc.data().phone,*/
+             ...doc.data()
+ 
+         })
+ 
+     )
+     // console.log(materialdidact);
+     // res.send(materialdidact) 
+     res.render('alianzas', {materialdidact})
+ 
+  });
+
 
 
 /*CONSULT*/ 
