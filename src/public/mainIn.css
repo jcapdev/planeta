@@ -1,0 +1,27 @@
+body {
+    background-color: #303030; 
+    /* background-image: url(https://planetapreescolar.com/fondo/fondomorado.png); */
+   /* background-image: url(https://planetapreescolar.com/fondo/fondomorado.png);*/
+
+  }
+
+.card {
+    /* background-color: #3d1e55 !important; */
+    /*background-color: aliceblue;*/
+}
+
+.sidebar {
+  height: 100vh;
+}
+
+.sidebar .nav-link {
+  color: #fff;
+}
+
+.bg-dark {  
+  /*background-color: #3d1e55 !important;*/
+}
+
+.form-control{
+  background-color: black;
+}
