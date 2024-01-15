@@ -1,6 +1,6 @@
 const {Router} = require('express');
 
-const {db} = require('../firebase')
+const { db} = require('../firebase')
 
 const router = Router();
 /*data material didactico*/ 
@@ -25,6 +25,52 @@ router.get( '/material-dicactico',async (req ,res) => {
     // console.log(materialdidact);
     // res.send(materialdidact) 
     res.render('materialdidactico', {materialdidact})
+
+ });
+
+
+
+ router.get( '/material-dicactico-in',async (req ,res) => {
+    const querySnapshot = await db.collection('MaterialDidactico').get()
+       
+    
+   const materialdidact =  querySnapshot.docs.map(
+        doc => ({
+            id: doc.id,
+            /*firstname:doc.data().firstname,
+            lastname: doc.data().lastname,
+            email:doc.data().email,
+            phone:doc.data().phone,*/
+            ...doc.data()
+
+        })
+
+    )
+    // console.log(materialdidact);
+    // res.send(materialdidact) 
+    res.render('materialdidacticoIn', {materialdidact})
+
+ });
+
+ router.get( '/material-dicactico-sec',async (req ,res) => {
+    const querySnapshot = await db.collection('MaterialDidactico').get()
+       
+    
+   const materialdidact =  querySnapshot.docs.map(
+        doc => ({
+            id: doc.id,
+            /*firstname:doc.data().firstname,
+            lastname: doc.data().lastname,
+            email:doc.data().email,
+            phone:doc.data().phone,*/
+            ...doc.data()
+
+        })
+
+    )
+    // console.log(materialdidact);
+    // res.send(materialdidact) 
+    res.render('materialdidacticoSec', {materialdidact})
 
  });
 

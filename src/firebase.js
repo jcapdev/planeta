@@ -16,7 +16,7 @@ module.exports = {
     db,
 }
 
-
+//export { db};
 /*
 console.log(    
     process.env.GOOGLE_APPLICATION_CREDENTIALS    
