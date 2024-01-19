@@ -1,0 +1,146 @@
+<div class="container-fuid">
+    <div class="row">
+        <div class="col-md-11">
+            <div class="container mt-2">
+                <select class="form-select" aria-label="Default select example">
+                    <option selected>Selecciona una opción</option>
+                    <option value="1">Opción 1</option>
+                    <option value="2">Opción 2</option>
+                    <option value="3">Opción 3</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-1">
+            <button class="square-button">
+
+            </button>
+        </div>
+    </div>
+
+    <div class="row mt-3">
+        <button class="square-button" data-bs-toggle="modal" data-bs-target="#nuevoRegistroModal">
+            <div class="circle"></div>
+        </button>
+    </div>
+    <div class="row mt-3">
+        <div class="col-md-12">
+            <h4>Buscar</h4>
+            <input type="text" class="form-control" name="searchCat" id="searchCat">
+        </div>
+    </div>
+
+    <!-- Lista de Comentarios -->
+    <div class="container mt-3">
+        <h2>Lista de Elementos</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Imagen</th>
+                    <th scope="col">Título</th>
+                    <th scope="col">Tipo</th>
+                    <th scope="col">Editar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><img src="https://via.placeholder.com/120x120" alt="Imagen"></td>
+                    <td>Elemento 1</td>
+                    <td>Tipo A</td>
+                    <td><a href="#" class="btn btn-primary">Editar</a></td>
+                </tr>
+                <tr>
+                    <td><img src="https://via.placeholder.com/120x120" alt="Imagen"></td>
+                    <td>Elemento 2</td>
+                    <td>Tipo B</td>
+                    <td><a href="#" class="btn btn-primary">Editar</a></td>
+                </tr>
+                <!-- Puedes agregar más filas según sea necesario -->
+            </tbody>
+        </table>
+    </div>
+
+    {{!-- Modal --}}
+    <div class="modal fade" id="nuevoRegistroModal" tabindex="-1" aria-labelledby="nuevoRegistroModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="nuevoRegistroModalLabel">Nuevo Registro</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Contenido del modal -->
+                    <form>
+                        <div class="mb-3">
+                            <label for="imagen" class="form-label">Subir Imagen</label>
+                            <input type="file" class="form-control" id="imagen">
+                        </div>
+                        <div class="mb-3">
+                            <label for="pdf" class="form-label">Subir PDF</label>
+                            <input type="file" class="form-control" id="pdf">
+                        </div>
+                        <div class="mb-3">
+                            <label for="word" class="form-label">Subir Documento Word</label>
+                            <input type="file" class="form-control" id="word">
+                        </div>
+                        <div class="mb-3">
+                            <label for="descripcion" class="form-label">Descripción</label>
+                            <textarea id="summernote" name="summernote"></textarea>
+
+                            {{!-- <textarea id = "summernote" name = "summernote" class="form-control"  ></textarea> --}}
+                        </div>
+                        <div class="mb-3">
+                            <div class="row">
+                                <div class="col-md-3 form-check">
+                                    <input class="form-check-input" type="radio" name="privacidad" id="publico"
+                                        value="publico">
+                                    <label class="form-check-label" for="publico">Público</label>
+                                </div>
+                                <div class="col-md-3 form-check">
+                                    <input class="form-check-input" type="radio" name="privacidad" id="privado"
+                                        value="privado">
+                                    <label class="form-check-label" for="privado">Privado</label>
+                                </div>
+                                <div class="col-md-3 form-check form-switch">
+                                      <input class="form-check-input" type="checkbox" name="privacidad" id="premium"
+                                        value="premium">
+                                      <label class="form-check-label" for="premium">Premium</label>  
+
+                                </div>
+                                <div class="col-md-3 form-check form-switch">
+                                    <input type="checkbox" class="form-check-input" id="premiumCheck">
+                                    <label class="form-check-label" for="premiumCheck">Recomendado</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="tags" class="form-label">Tags</label>
+                            <textarea class="form-control" id="tags" rows="2"></textarea>
+                        </div>
+
+                        <div class="d-flex justify-content-center">
+                            <button type="button" class="btn btn-primary">Guardar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  <script>
+    $(document).ready(function() {
+      $('#summernote').summernote({
+        height: 300,
+        placeholder: 'Escribe aquí...',
+        toolbar: [
+          ['style', ['style']],
+          ['font', ['bold', 'italic', 'underline', 'clear']],
+          ['fontname', ['fontname']],
+          ['color', ['color']],
+          ['para', ['ul', 'ol', 'paragraph']],
+          ['height', ['height']],
+          ['view', ['fullscreen', 'codeview']],
+        ]
+      });
+    });
+  </script>

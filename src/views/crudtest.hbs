@@ -1,0 +1,64 @@
+<div class="col-md-6 offset-md-3">
+  <div class="card bg-dark text-light">
+    <div class="card-header">
+      <h1 class="h4 text-white">Add List</h1>
+    </div>    
+    <div class="card-footer">
+      <form action="/new-contactTestFiles" method="POST">
+        <div class="row">
+          <div class="col">
+            <label for="firstname">First Name:</label>
+            <input
+              type="text"
+              name="firstname"
+              placeholder="Firstname"
+              class="form-control mb-3"            
+              
+            />
+          </div>
+          <div class="col">
+            <label for="lastname">Last Name:</label>
+            <input
+              type="text"
+              name="lastname"
+              placeholder="Lastname"
+              class="form-control mb-3"              
+            />
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <label for="email">Email:</label>
+            <input
+              type="email"
+              name="email"
+              placeholder="email"
+              class="form-control mb-3"              
+            />
+          </div>
+
+          <div class="col">
+            <label for="phone">Phone:</label>
+            <input
+              type="tel"
+              name="phone"
+              placeholder="Phone"
+              class="form-control mb-3"              
+            />
+          </div>
+          <div class="col">
+            <label for="archivo">pdf:</label>
+             <input type="file" id="pdf" name="pdf" accept=".pdf" class="form-control mb-3">
+          </div>
+          <div class="col">
+            <label for="archivo">word:</label>
+             <input type="file" id="pdf" name="pdf" accept=".pdf" class="form-control mb-3">
+          </div>
+        </div>
+          <button class="btn btn-primary btn-block">
+            Add
+          </button>
+      </form>
+    </div>
+  </div>
+</div>
