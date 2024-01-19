@@ -2,31 +2,111 @@ const {Router} = require('express');
 
 const { db} = require('../firebase')
 
+
 const router = Router();
+
+
+
+
 /*data material didactico*/ 
 
 
-router.get( '/material-dicactico',async (req ,res) => {
-    const querySnapshot = await db.collection('MaterialDidactico').get()
+
+/*testing*/ 
+/* CRUD DATA AND FILES*/
+
+router.get( '/crudtest',async (req ,res) => {
+   
+    //    res.send('HOLAM ') 
+        res.render('crudtest')
+    
+     });
+    
+
+// router.post("/new-contactTestFiles", upload.fields([{ name: 'pdf', maxCount: 1 }, { name: 'word', maxCount: 1 }]), async (req, res) => {
+//     const { firstname, lastname, email, phone } = req.body;
+//     const files = req.files; // Obtener los archivos del formulario
+
+//     // Subir archivos a Firebase Storage
+//     const fileRefs = {};
+
+//     for (const key of Object.keys(files)) {
+//         const file = files[key][0];
+//         const filename = uuidv4(); // Generar un nombre de archivo único
+
+//         let folder;
+//         if (key === 'pdf') {
+//             folder = 'crudtest-pdf';
+//         } else if (key === 'word') {
+//             folder = 'crudtest-word';
+//         } else {
+//             // Manejar casos no esperados
+//             res.status(400).send(`Campo de archivo no reconocido: ${key}`);
+//             return;
+//         }
+
+//         const fileRef = admin.storage().bucket().file(`${folder}/${filename}`);
+
+//         const stream = fileRef.createWriteStream({
+//             metadata: {
+//                 contentType: file.mimetype
+//             }
+//         });
+
+//         stream.on('error', (error) => {
+//             console.error(error);
+//             res.status(500).send('Error al cargar el archivo.');
+//         });
+
+//         stream.on('finish', () => {
+//             fileRefs[key] = `https://storage.googleapis.com/${admin.storage().bucket().name}/${fileRef.name}`;
+
+//             if (fileRefs['pdf'] && fileRefs['word']) {
+//                 // Insertar ambas rutas en Firestore
+//                 db.collection('crudtestfile').add({
+//                     firstname,
+//                     lastname,
+//                     email,
+//                     phone,
+//                     pdf: fileRefs['pdf'],
+//                     word: fileRefs['word']
+//                 })
+//                 .then(() => {
+//                     res.redirect("/crudtest");
+//                 })
+//                 .catch((error) => {
+//                     console.error(error);
+//                     res.status(500).send('Error al agregar datos del formulario.');
+//                 });
+//             }
+//         });
+
+//         stream.end(file.buffer);
+//     }
+// });
+
+
+// router.get( '/material-dicactico',async (req ,res) => {
+//     const querySnapshot = await db.collection('MaterialDidactico').get()
        
     
-   const materialdidact =  querySnapshot.docs.map(
-        doc => ({
-            id: doc.id,
-            /*firstname:doc.data().firstname,
-            lastname: doc.data().lastname,
-            email:doc.data().email,
-            phone:doc.data().phone,*/
-            ...doc.data()
+//    const materialdidact =  querySnapshot.docs.map(
+//         doc => ({
+//             id: doc.id,
+//             /*firstname:doc.data().firstname,
+//             lastname: doc.data().lastname,
+//             email:doc.data().email,
+//             phone:doc.data().phone,*/
+//             ...doc.data()
 
-        })
+//         })
 
-    )
-    // console.log(materialdidact);
-    // res.send(materialdidact) 
-    res.render('materialdidactico', {materialdidact})
+//     )
+//     // console.log(materialdidact);
+//     // res.send(materialdidact) 
+//     res.render('materialdidactico', {materialdidact})
 
- });
+//  });
 
 
 
@@ -266,6 +346,31 @@ router.get( '/interactivos',async (req ,res) => {
      res.render('alianzas', {materialdidact})
  
   });
+
+
+  router.get( '/publicaciones',async (req ,res) => {
+    /* cambiar por documento de datos de interactivos*/
+    const querySnapshot = await db.collection('MaterialDidactico').get()
+        
+     
+    const materialdidact =  querySnapshot.docs.map(
+         doc => ({
+             id: doc.id,
+             /*firstname:doc.data().firstname,
+             lastname: doc.data().lastname,
+             email:doc.data().email,
+             phone:doc.data().phone,*/
+             ...doc.data()
+ 
+         })
+ 
+     )
+     // console.log(materialdidact);
+     // res.send(materialdidact) 
+     res.render('publicaciones', {materialdidact})
+ 
+  });
+
 
 
 

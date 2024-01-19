@@ -25,3 +25,28 @@ body {
 .form-control{
   background-color: black;
 }
+
+.square-button {
+  position: relative;
+  display: inline-block;
+  width: 50px; /* Ajusta el tamaño del botón según tus necesidades */
+  height: 50px; /* Ajusta el tamaño del botón según tus necesidades */
+  background-color: #000000; /* Color de fondo del botón */
+  color: #fff; /* Color del texto del botón */
+  text-align: center;
+  line-height: 50px; /* Igual a la altura para centrar el texto verticalmente */
+  text-decoration: none;
+  border: none;
+  border-radius: 5px; /* Ajusta el radio de borde según tus necesidades */
+}
+
+.circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30px; /* Ajusta el tamaño del círculo según tus necesidades */
+  height: 30px; /* Ajusta el tamaño del círculo según tus necesidades */
+  background-color: #303030; /* Color de fondo del círculo */
+  border-radius: 50%;
+}
