@@ -1,11 +1,20 @@
+<div class = "row mt-5">
+  <div class="col-md-12">
+      <div class="input-group mb-3" style="padding: 0px 100px 0px 100px;">
+        <input type="text" class="form-control" placeholder="Buscar..." aria-label="Buscar" aria-describedby="basic-addon2">
+        <button class="btn btn-primary" type="button" id="btnBuscar">Buscar</button>
+      </div>
+  </div>    
+</div>
+
 <div class="col-md-12">
   {{!-- modo incognito --}}
-  <div class="card bg-dark text-light">
+  <div class="card bg-dark text-light mt-5">
     {{!--  --}}
   <div class="card bg-light text-dark">
     <div class="card-header">
       {{!-- <h1 class="h4 text-white">Material didactico</h1> --}}
-      <h1 class="h4 text-dark">Texto Prueba</h1>
+      <h4 class="h4 text-dark">Texto Prueba</h4>
     </div>
     <div class="card-body">
       {{#if materialdidact}}
@@ -14,7 +23,6 @@
             <div class = "col-lg-4">
                 <div class = "bs-component">
                      <div class="card mb-3">
-                        <h3 class="card-header">{{titulo}}</h3>                         
                         <img src="{{UrlImagen}}" alt="">
                         <div class="card-body">
                           <h5 class="card-title">{{titulo}}</h5>

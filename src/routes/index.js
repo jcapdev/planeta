@@ -86,27 +86,27 @@ router.get( '/crudtest',async (req ,res) => {
 // });
 
 
-// router.get( '/material-dicactico',async (req ,res) => {
-//     const querySnapshot = await db.collection('MaterialDidactico').get()
+router.get( '/material-dicactico',async (req ,res) => {
+    const querySnapshot = await db.collection('MaterialDidactico').get()
        
     
-//    const materialdidact =  querySnapshot.docs.map(
-//         doc => ({
-//             id: doc.id,
-//             /*firstname:doc.data().firstname,
-//             lastname: doc.data().lastname,
-//             email:doc.data().email,
-//             phone:doc.data().phone,*/
-//             ...doc.data()
+   const materialdidact =  querySnapshot.docs.map(
+        doc => ({
+            id: doc.id,
+            /*firstname:doc.data().firstname,
+            lastname: doc.data().lastname,
+            email:doc.data().email,
+            phone:doc.data().phone,*/
+            ...doc.data()
 
-//         })
+        })
 
-//     )
-//     // console.log(materialdidact);
-//     // res.send(materialdidact) 
-//     res.render('materialdidactico', {materialdidact})
+    )
+    // console.log(materialdidact);
+    // res.send(materialdidact) 
+    res.render('materialdidactico', {materialdidact})
 
-//  });
+ });
 
 
 
@@ -180,6 +180,29 @@ router.get( '/interactivos',async (req ,res) => {
 
  });
 
+ router.get( '/interactivosIn',async (req ,res) => {
+    /* cambiar por documento de datos de interactivos*/
+    const querySnapshot = await db.collection('MaterialDidactico').get()
+        
+     
+    const materialdidact =  querySnapshot.docs.map(
+         doc => ({
+             id: doc.id,
+             /*firstname:doc.data().firstname,
+             lastname: doc.data().lastname,
+             email:doc.data().email,
+             phone:doc.data().phone,*/
+             ...doc.data()
+ 
+         })
+ 
+     )
+     // console.log(materialdidact);
+     // res.send(materialdidact) 
+     res.render('interactivosIn', {materialdidact})
+ 
+  });
+
 
  router.get( '/hojas-colorear',async (req ,res) => {
     /* cambiar por documento de datos de interactivos*/
@@ -201,6 +224,29 @@ router.get( '/interactivos',async (req ,res) => {
      // console.log(materialdidact);
      // res.send(materialdidact) 
      res.render('hojascolorear', {materialdidact})
+ 
+  });
+
+  router.get( '/hojas-colorearIn',async (req ,res) => {
+    /* cambiar por documento de datos de interactivos*/
+    const querySnapshot = await db.collection('MaterialDidactico').get()
+        
+     
+    const materialdidact =  querySnapshot.docs.map(
+         doc => ({
+             id: doc.id,
+             /*firstname:doc.data().firstname,
+             lastname: doc.data().lastname,
+             email:doc.data().email,
+             phone:doc.data().phone,*/
+             ...doc.data()
+ 
+         })
+ 
+     )
+     // console.log(materialdidact);
+     // res.send(materialdidact) 
+     res.render('hojascolorearIn', {materialdidact})
  
   });
 
@@ -227,6 +273,30 @@ router.get( '/interactivos',async (req ,res) => {
      res.render('hojastrabajo', {materialdidact})
  
   });
+
+
+  router.get( '/hojas-trabajoIn',async (req ,res) => {
+    /* cambiar por documento de datos de interactivos*/
+    const querySnapshot = await db.collection('MaterialDidactico').get()
+        
+     
+    const materialdidact =  querySnapshot.docs.map(
+         doc => ({
+             id: doc.id,
+             /*firstname:doc.data().firstname,
+             lastname: doc.data().lastname,
+             email:doc.data().email,
+             phone:doc.data().phone,*/
+             ...doc.data()
+ 
+         })
+ 
+     )
+     // console.log(materialdidact);
+     // res.send(materialdidact) 
+     res.render('hojastrabajoIn', {materialdidact})
+ 
+  });
  
 
   router.get( '/planeaciones',async (req ,res) => {
@@ -249,6 +319,52 @@ router.get( '/interactivos',async (req ,res) => {
      // console.log(materialdidact);
      // res.send(materialdidact) 
      res.render('planeaciones', {materialdidact})
+ 
+  });
+  router.get( '/planeacionesIn',async (req ,res) => {
+    /* cambiar por documento de datos de interactivos*/
+    const querySnapshot = await db.collection('MaterialDidactico').get()
+        
+     
+    const materialdidact =  querySnapshot.docs.map(
+         doc => ({
+             id: doc.id,
+             /*firstname:doc.data().firstname,
+             lastname: doc.data().lastname,
+             email:doc.data().email,
+             phone:doc.data().phone,*/
+             ...doc.data()
+ 
+         })
+ 
+     )
+     // console.log(materialdidact);
+     // res.send(materialdidact) 
+     res.render('planeacionesIn', {materialdidact})
+ 
+  });
+ 
+  
+  router.get( '/planeacionesSec',async (req ,res) => {
+    /* cambiar por documento de datos de interactivos*/
+    const querySnapshot = await db.collection('MaterialDidactico').get()
+        
+     
+    const materialdidact =  querySnapshot.docs.map(
+         doc => ({
+             id: doc.id,
+             /*firstname:doc.data().firstname,
+             lastname: doc.data().lastname,
+             email:doc.data().email,
+             phone:doc.data().phone,*/
+             ...doc.data()
+ 
+         })
+ 
+     )
+     // console.log(materialdidact);
+     // res.send(materialdidact) 
+     res.render('planeacionesSec', {materialdidact})
  
   });
  
