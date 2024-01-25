@@ -1,12 +1,84 @@
+
+const express = require('express');
+const admin = require('firebase-admin');
+const fileUpload = require('express-fileupload');
+
+const path = require('path');
+const fs = require('fs');
+const serviceAccount = require('../../firebase.json');
+const cors = require('cors');
+
 const {Router} = require('express');
 
 const { db} = require('../firebase')
 
 
+
+const app = express();
+
 const router = Router();
 
 
+// Inicializa la aplicación de administración de Firebase
 
+if (!admin.apps.length) {
+    admin.initializeApp({
+        credential: admin.credential.cert(serviceAccount),
+        storageBucket: 'gs://planeta-beta-f8361.appspot.com', // Reemplaza con la URL del bucket de almacenamiento de Firebase
+    });
+    
+}
+
+
+
+const bucket = admin.storage().bucket('gs://planeta-beta-f8361.appspot.com');
+
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cors({ origin: '*' }));
+app.use(fileUpload());
+
+
+
+/* uplodad img testig*/
+
+router.post('/upload', async (req, res) => {
+
+    console.log('body', req.body);
+    console.log('imagenes', req.files);
+    // if (!req.files || Object.keys(req.files).length === 0) {
+    //     return res.status(400).send('No se ha enviado ninguna imagen.');
+    // }
+
+    // const image = req.files.image;
+    // const uploadPath = path.join(__dirname, 'uploads', image.name);
+
+    // // Mueve el archivo al directorio de subidas
+    // image.mv(uploadPath, async (err) => {
+    //     if (err) {
+    //         return res.status(500).send(err);
+    //     }
+
+    //     // Sube la imagen al almacenamiento de Firebase
+    //     const remotePath = `images/${image.name}`;
+    //     const dataImage = await bucket.upload(uploadPath, { destination: remotePath });
+    //     console.log('dataImage', dataImage);
+
+    //     // Elimina el archivo local después de subirlo a Firebase
+    //     fs.unlinkSync(uploadPath);
+
+    //     const imageUrl = await bucket.file(remotePath).getSignedUrl({
+    //         action: 'read',
+    //         expires: '01-01-2100' // Define una fecha de vencimiento futura (puedes ajustarla según tus necesidades)
+    //     });
+
+    //     console.log('URL de la imagen:', imageUrl[0]);
+
+
+    //     res.send('Imagen subida y almacenada en Firebase exitosamente');
+    // });
+});
 
 /*data material didactico*/ 
 
@@ -297,7 +369,37 @@ router.get( '/interactivos',async (req ,res) => {
      res.render('hojastrabajoIn', {materialdidact})
  
   });
+
+  
+/*ADD HOJAS DE TRABAJO*/ 
+router.post("/new-hojas-trabajo", async (req, res) => {
+
+    const { summernote, privacidad, premiumCheck, tags } = req.body;
+    
+    // url por default
+    const Urlarchivoimg = "https://firebasestorage.googleapis.com/v0/b/planetapreescolar-39350.appspot.com/o/materialdidactico%2Fj6rfHkuCxfPx0R7PLorc%2F1614209351061%2Fportada-perfil?alt=media&token=58409111-aeed-4215-b54a-c576882480ea";
+    /*add record*/
+    
+    await db.collection('hojastrabajo').add({
+        summernote,
+        privacidad,
+        premiumCheck,
+        tags,
+        Urlarchivoimg
+    })
+    
+    //console.log(firstname,lastname,email,phone);
+    
+    console.log(summernote,privacidad,premiumCheck,tags,Urlarchivoimg)
+
+    res.redirect("/publicaciones");
+});
+
+
+  
  
+
+
 
   router.get( '/planeaciones',async (req ,res) => {
     /* cambiar por documento de datos de interactivos*/
