@@ -400,7 +400,6 @@ router.post("/new-hojas-trabajo", async (req, res) => {
  
 
 
-
   router.get( '/planeaciones',async (req ,res) => {
     /* cambiar por documento de datos de interactivos*/
     const querySnapshot = await db.collection('MaterialDidactico').get()
@@ -589,6 +588,17 @@ router.post("/new-hojas-trabajo", async (req, res) => {
  
   });
 
+
+
+  
+  router.get( '/administrador',async (req ,res) => {
+    /* cambiar por documento de datos de interactivos*/
+ 
+     // console.log(materialdidact);
+     // res.send(materialdidact) 
+     res.render('administrador')
+ 
+  });
 
 
 
